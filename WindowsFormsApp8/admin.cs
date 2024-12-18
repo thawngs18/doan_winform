@@ -427,16 +427,6 @@ namespace WindowsFormsApp8
             button32.PerformClick();
         }
 
-
-
-
-
-
-
-
-
-
-
         private void btnXemNV_Click(object sender, EventArgs e)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
