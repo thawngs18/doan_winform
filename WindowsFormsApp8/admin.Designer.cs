@@ -1554,7 +1554,7 @@
             this.pnlKH.Controls.Add(this.label11);
             this.pnlKH.Controls.Add(this.label4);
             this.pnlKH.Controls.Add(this.LblMaKh);
-            this.pnlKH.Location = new System.Drawing.Point(1067, 17);
+            this.pnlKH.Location = new System.Drawing.Point(116, 24);
             this.pnlKH.Name = "pnlKH";
             this.pnlKH.Size = new System.Drawing.Size(902, 505);
             this.pnlKH.TabIndex = 21;
@@ -1778,7 +1778,7 @@
             this.pnlNV.Controls.Add(this.label15);
             this.pnlNV.Controls.Add(this.label14);
             this.pnlNV.Controls.Add(this.label1);
-            this.pnlNV.Location = new System.Drawing.Point(111, 594);
+            this.pnlNV.Location = new System.Drawing.Point(118, 22);
             this.pnlNV.Name = "pnlNV";
             this.pnlNV.Size = new System.Drawing.Size(903, 495);
             this.pnlNV.TabIndex = 22;
@@ -1968,7 +1968,7 @@
             this.pnlDoanhThu.Controls.Add(this.label57);
             this.pnlDoanhThu.Controls.Add(this.label56);
             this.pnlDoanhThu.Controls.Add(this.label55);
-            this.pnlDoanhThu.Location = new System.Drawing.Point(131, 26);
+            this.pnlDoanhThu.Location = new System.Drawing.Point(1071, 34);
             this.pnlDoanhThu.Margin = new System.Windows.Forms.Padding(2);
             this.pnlDoanhThu.Name = "pnlDoanhThu";
             this.pnlDoanhThu.Size = new System.Drawing.Size(900, 499);

@@ -1993,7 +1993,45 @@ namespace WindowsFormsApp8
 
         private void btnThongKe_Click(object sender, EventArgs e)
         {
-            
+            try
+            {
+                using (var context = new Model1())
+                {
+                    // Lấy khoảng thời gian từ người dùng nhập
+                    DateTime tuNgay = dtpNgayBD.Value;
+                    DateTime denNgay = dtpNgayKT.Value;
+
+                    // Lấy ID phim từ ComboBox (nếu chọn tất cả thì bỏ lọc theo phim)
+                    string idPhim = cmbChonPhim.SelectedValue?.ToString();
+                    var doanhThuQuery = context.DoanhThus.Where(dt => dt.Tien > 0 && dt.idLichChieu != null);
+
+                    if (!string.IsNullOrEmpty(idPhim))
+                    {
+                        doanhThuQuery = doanhThuQuery.Where(dt => dt.idPhim == idPhim);
+                    }
+
+                    doanhThuQuery = doanhThuQuery.Where(dt =>
+                        context.LichChieux.Any(lc => lc.id == dt.idLichChieu && lc.ThoiGianChieu >= tuNgay && lc.ThoiGianChieu <= denNgay));
+
+                    // Lấy dữ liệu và chuyển thành danh sách
+                    var doanhThuList = doanhThuQuery.Select(dt => new
+                    {
+                        NgayChieu = context.LichChieux.Where(lc => lc.id == dt.idLichChieu).Select(lc => lc.ThoiGianChieu).FirstOrDefault(),
+                        Tien = dt.Tien
+                    }).ToList();
+
+                    // Hiển thị dữ liệu trong DataGridView
+                    dtgDoanhThu.DataSource = doanhThuList;
+
+                    // Tính tổng doanh thu
+                    double tongDoanhThu = doanhThuList.Sum(dt => dt.Tien.HasValue ? dt.Tien.Value : 0);
+                    txtDoanhThu.Text = tongDoanhThu.ToString("C"); // Format thành tiền tệ
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi: " + ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         public void loadCBPhim()
         {
